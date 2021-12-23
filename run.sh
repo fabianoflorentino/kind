@@ -3,7 +3,7 @@
 case $1 in
 
     --create)
-        kind create cluster --config=./config/cluster.yaml;;
+        kind create cluster --config=./config/cluster.yml;;
     --delete)
         kind delete cluster --name $2;;
     *)
