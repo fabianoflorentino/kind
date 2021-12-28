@@ -20,12 +20,6 @@ networking:
 
 nodes:
   - role: control-plane
-    extraMounts:
-    - hostPath: /mnt/storage/vol1
-      containerPath: /opt/vol1
-      readOnly: true
-      selinuxRelabel: false
-      propagation: HostToContainer
     kubeadmConfigPatches:
     - |
       kind: InitConfiguration
@@ -41,13 +35,13 @@ nodes:
       hostPort: 8441
       listenAddress: "172.16.252.100"
       protocol: TCP
-  - role: control-plane
     extraMounts:
     - hostPath: /mnt/storage/vol1
       containerPath: /opt/vol1
       readOnly: true
       selinuxRelabel: false
       propagation: HostToContainer
+  - role: control-plane
     kubeadmConfigPatches:
     - |
       kind: InitConfiguration
@@ -63,13 +57,13 @@ nodes:
       hostPort: 8442
       listenAddress: "172.16.252.100"
       protocol: TCP
-  - role: control-plane
     extraMounts:
     - hostPath: /mnt/storage/vol1
       containerPath: /opt/vol1
       readOnly: true
       selinuxRelabel: false
       propagation: HostToContainer
+  - role: control-plane
     kubeadmConfigPatches:
     - |
       kind: InitConfiguration
@@ -85,6 +79,12 @@ nodes:
       hostPort: 8443
       listenAddress: "172.16.252.100"
       protocol: TCP
+    extraMounts:
+    - hostPath: /mnt/storage/vol1
+      containerPath: /opt/vol1
+      readOnly: true
+      selinuxRelabel: false
+      propagation: HostToContainer
   - role: worker
   - role: worker
   - role: worker
