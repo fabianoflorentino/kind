@@ -5,6 +5,7 @@ Usage: run.sh [OPTIONS]
 
     -c, --create            Print version information
     -d, --delete            Configuration file
+    -n, --enable-cni        Enable CNI
     -i, --enable-ingress    Enable ingress
     -d, --enable-dashboard  Enable dashboard
     -u, --admin-user        Create admin user
@@ -18,6 +19,8 @@ case $1 in
         kind create cluster --config=./config/cluster.yml;;
     -d|--delete)
         kind delete cluster --name $2;;
+    -n|--enable-cni)
+        kubectl apply -f ./cni/calico.yaml;;
     -i|--enable-ingress)
         kubectl label node --overwrite lab-control-plane ingress-ready=true
         kubectl apply -f ./ingress/nginx.yml;;
